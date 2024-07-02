@@ -10,6 +10,6 @@ describe('Utils function tests', () => {
         expect(getFooterCopy(false)).toBe('Holberton School main dashboard');
     });
     test('getLatestNotification returns correct notification string', () => {
-        expect(getLatestNotification()).toBe('Urgent requirement- complete by EOD')
+        expect(getLatestNotification()).toBe('<strong>Urgent requirement</strong>- complete by EOD')
     })
 })
