@@ -1,0 +1,20 @@
+.Notifications {
+    border: 3px dashed red;
+    position: absolute;
+    top: 2px;
+    width: 90vw;
+    font-weight: bold;
+    padding: 2px;
+    font-size: larger;
+    font-style: oblique;
+    margin-left: 40px;
+    margin-bottom: 300px;
+}
+
+li[data="default"] {
+    color: rgb(19, 19, 79);
+}
+
+li[data="urgent"] {
+    color: red;
+}
