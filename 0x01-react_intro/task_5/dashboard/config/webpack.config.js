@@ -6,7 +6,7 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    mode: "development",
+    mode: 'development',
     devServer: {
         contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
