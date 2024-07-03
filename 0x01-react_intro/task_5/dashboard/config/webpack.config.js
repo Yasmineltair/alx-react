@@ -1,4 +1,4 @@
-const HtmlWebpackPlug = require('path');
+const path = require('path');
 
 module.exports = {
     entry: './src/index.js',
@@ -8,11 +8,8 @@ module.exports = {
     },
     mode: "development",
     devServer: {
-        static: "./dist",
-        compress: true,
-        open: true,
+        contentBase: path.resolve(__dirname, 'dist'),
         hot: true,
-        port: 8564,
     },
     module: {
         rules: [
@@ -23,25 +20,8 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
-                use: [
-                    "file-loader",
-                    {
-                        loader: "image-webpack-loader",
-                        options: {
-                            bypassOnDebug: true,
-                            disable: true,
-                        },
-                    },
-                ],
             },
         ],
     },
     devtool: 'inline-source-map',
-    plugins: [
-        new HtmlWebpackPlug({
-            name: "index.html",
-            inject: false,
-            template: "./dist/index.html",
-        }),
-    ],
 };
