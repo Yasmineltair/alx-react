@@ -1,4 +1,4 @@
-const path = require('path');
+const HtmlWebpackPlug = require('path');
 
 module.exports = {
     entry: './src/index.js',
@@ -6,9 +6,13 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    mode: "development",
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        static: "./dist",
+        compress: true,
+        open: true,
         hot: true,
+        port: 8564,
     },
     module: {
         rules: [
@@ -19,8 +23,25 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
+                use: [
+                    "file-loader",
+                    {
+                        loader: "image-webpack-loader",
+                        options: {
+                            bypassOnDebug: true,
+                            disable: true,
+                        },
+                    },
+                ],
             },
         ],
     },
     devtool: 'inline-source-map',
+    plugins: [
+        new HtmlWebpackPlug({
+            name: "index.html",
+            inject: false,
+            template: "./dist/index.html",
+        }),
+    ],
 };
