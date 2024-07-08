@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/holberton-logo.jpg";
-import { Stylesheet, css } from "aphrodite";
+import { StyleSheet, css } from "aphrodite";
 
 function Header() {
   return (
