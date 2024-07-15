@@ -23,10 +23,11 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.menuItem)}>
+        {!this.props.displayDrawer ? (
+          <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
           <p>Your notifications</p>
-        </div>
-        {this.props.displayDrawer ? (
+          </div>
+        ) : (
           <div className={css(styles.Notifications)}>
             <button
               style={{
@@ -56,7 +57,7 @@ class Notifications extends Component {
               })}
             </ul>
           </div>
-        ) : null}
+        )}
       </React.Fragment>
     );
   }
@@ -113,11 +114,15 @@ const styles = StyleSheet.create({
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: propTypes.func,
+  handleHideDrawer: propTypes.func,
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 export default Notifications;
