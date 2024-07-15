@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Stylesheet, css } from "aphrodite";
+import { StyleSheet, css } from "aphrodite";
 import closeIcon from "../assets/close-icon.png";
 import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
@@ -25,7 +25,7 @@ class Notifications extends Component {
       <React.Fragment>
         {!this.props.displayDrawer ? (
           <div className={css(styles.menuItem)} onClick={this.props.handleDisplayDrawer}>
-          <p>Your notifications</p>
+            <p>Your notifications</p>
           </div>
         ) : (
           <div className={css(styles.Notifications)}>
@@ -45,6 +45,7 @@ class Notifications extends Component {
               aria-label="Close"
               onClick={(e) => {
                 console.log("Close button has been clicked");
+                this.props.handleHideDrawer();
               }}
             >
               <img src={closeIcon} alt="close icon" width="10px" />
@@ -63,16 +64,17 @@ class Notifications extends Component {
   }
 }
 
-const opacityAnimation = {
+const opacityAnim = {
   "0%": { opacity: 0.5 },
   "100%": { opacity: 1 },
 };
-const bounceAnimation = {
-  "0%": { transform: "translateY(0px)"},
+
+const bounceAnim = {
+  "0%": { transform: "translateY(0px)" },
   "33%": { transform: "translateY(-5px)" },
   "66%": { transform: "translateY(5px)" },
   "100%": { transform: "translateY(0px)" },
-}
+};
 
 const styles = StyleSheet.create({
   Notifications: {
@@ -82,14 +84,14 @@ const styles = StyleSheet.create({
     top: "1.8em",
     right: "0",
     zIndex: "100",
-  "@media (max-width: 900px)": {
-    width: "100%",
-    padding: "0px",
-    fontSize: 20,
-    position: "relative",
-    right: 0,
-    left: 0,
-    border: "none",
+    "@media (max-width: 900px)": {
+      width: "100%",
+      padding: "0px",
+      fontSize: 20,
+      position: "relative",
+      right: 0,
+      left: 0,
+      border: "none",
     },
   },
 
@@ -109,13 +111,25 @@ const styles = StyleSheet.create({
       animationIterationCount: "3",
     },
   },
+
+  ul: {
+    "@media (max-width: 900px)": {
+      padding: 0,
+    },
+  },
+  button: {
+    "@media (max-width: 900px)": {
+      position: "relative",
+      float: "right",
+    },
+  },
 });
 
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
-  handleDisplayDrawer: propTypes.func,
-  handleHideDrawer: propTypes.func,
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {

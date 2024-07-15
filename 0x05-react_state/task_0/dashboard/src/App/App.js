@@ -14,9 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      displayDrawer: false
-    };
+    this.state = { displayDrawer: false };
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleDisplayDrawer = this.handleDisplayDrawer.bind(this);
@@ -44,15 +42,11 @@ class App extends React.Component {
   }
 
   handleDisplayDrawer() {
-    this.setState({
-      displayDrawer: true
-    });
+    this.setState({ displayDrawer: true });
   }
 
   handleHideDrawer() {
-    this.setState({
-      displayDrawer: false
-    });
+    this.setState({ displayDrawer: false });
   }
 
   componentDidMount() {
@@ -68,11 +62,12 @@ class App extends React.Component {
       <React.Fragment>
         <div className={css(styles.App)}>
           <div className="heading-section">
-            <Notifications 
-              listNotifications={this.listNotifications} 
+            <Notifications
+              listNotifications={this.listNotifications}
               displayDrawer={this.state.displayDrawer}
               handleDisplayDrawer={this.handleDisplayDrawer}
-              handleHideDrawer={this.handleHideDrawer}/>
+              handleHideDrawer={this.handleHideDrawer}
+            />
             <Header />
           </div>
           {this.props.isLoggedIn ? (
