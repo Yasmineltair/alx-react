@@ -1,5 +1,5 @@
-import { formJS } from 'immutable';
+import { fromJS } from 'immutable';
 
 export default function getImmutableObject(object) {
-    return formJS(object);
+  return fromJS(object);
 }
